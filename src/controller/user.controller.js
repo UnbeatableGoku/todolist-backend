@@ -109,7 +109,7 @@ const validateUser = async (req, res) => {
       const secure = req.secure ? true : false;
 
       return res
-        .cookie('jwt', token, { sameSite: 'strict', httpOnly: true, secure })
+        .cookie('jwt', token, { sameSite: 'none', httpOnly: true, secure:true })
         .json({ message: true, data: user });
     } else {
       return res.status(404).json({ error: 'wrong credentials' });
