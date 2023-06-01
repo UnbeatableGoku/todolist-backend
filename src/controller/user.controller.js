@@ -141,7 +141,7 @@ const verifyTokenEmail = (req, res, next) => {
       return res.status(401).json({ auth: false, error: 'unAuthorized User' });
     }
   } else {
-    return res.status(404).json({ auth: false, error: 'no token is found' });
+    return res.status(404).json({ auth: false});
   }
 };
 
