@@ -264,7 +264,7 @@ const deleteTaskController = async (req, res) => {
 
 const logoutController = async (req, res) => {
   console.log('logout');
-  return res.clearCookie('jwt').json({ message: true });
+  return res.clearCookie('jwt',{ sameSite: 'none', httpOnly: true, secure:true}).json({ message: true });
 };
 module.exports = {
   signUpUser,
