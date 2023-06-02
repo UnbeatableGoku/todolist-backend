@@ -15,7 +15,7 @@ const router = express.Router();
 
 router.post('/createuser', signUpUser);
 router.post('/auth', validateUser);
-router.get('/logout', logoutController);
+router.post('/logout', logoutController);
 
 router.use('/', verifyTokenEmail);
 router.post('/createtask', createTaskController);
