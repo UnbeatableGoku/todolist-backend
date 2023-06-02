@@ -266,7 +266,6 @@ const logoutController = async (req, res) => {
   console.log('logout');
   return res
         .clearCookie('jwt',{ sameSite: 'none', httpOnly: true, secure:true })
-        .set("Cache-Control","no-store")
         .json({ message: true });
 };
 module.exports = {
