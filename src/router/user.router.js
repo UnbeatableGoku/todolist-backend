@@ -15,9 +15,10 @@ const router = express.Router();
 
 router.post('/createuser', signUpUser);
 router.post('/auth', validateUser);
-router.post('/logout', logoutController);
+
 
 router.use('/', verifyTokenEmail);
+router.post('/logout', logoutController);
 router.post('/createtask', createTaskController);
 router.get('/protected', authUserController);
 router.get('/gettask', getTaskController);
