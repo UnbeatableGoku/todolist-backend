@@ -109,7 +109,7 @@ const validateUser = async (req, res) => {
       const secure = req.secure ? true : false;
 
       return res
-        .cookie('jwt', token, { sameSite: 'none', httpOnly: true, secure:true,maxAge:24 * 60 * 60 * 1000 })
+        .cookie('jwt', token, { sameSite: 'none', httpOnly: true,maxAge:24 * 60 * 60 * 1000 })
         .json({ message: true, data: user });
     } else {
       return res.status(404).json({ error: 'wrong credentials' });
@@ -265,7 +265,7 @@ const deleteTaskController = async (req, res) => {
 const logoutController = async (req, res) => {
   console.log('logout');
   return res
-        .cookie('jwt','',{ sameSite: 'none', httpOnly: true, secure:true })
+        .cookie('jwt','',{ sameSite: 'none', httpOnly: true })
         .json({ message: true });
 };
 module.exports = {
