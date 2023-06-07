@@ -106,10 +106,20 @@ const validateUser = async (req, res) => {
     );
     if (decryptPassword) {
       const token = await createToken(user._id, user.email);
-      const secure = req.secure ? true : false;
+          const secure = req.secure ? true : false;
+
+      const cookieOptions = {
+        sameSite: 'none',
+        httpOnly: true,
+        maxAge: 24 * 60 * 60 * 1000
+      };
+
+      if (secure) {
+        cookieOptions.secure = true;
+      }
 
       return res
-        .cookie('jwt', token, { sameSite: 'none', httpOnly: true,maxAge:24 * 60 * 60 * 1000,secure:true })
+        .cookie('jwt', token, cookieOptions)
         .json({ message: true, data: user });
     } else {
       return res.status(404).json({ error: 'wrong credentials' });
